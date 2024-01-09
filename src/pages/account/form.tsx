@@ -67,8 +67,7 @@ export default function Form() {
           router.push("/account");
         } else {
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
   }
 
@@ -76,12 +75,12 @@ export default function Form() {
     email: session?.user?.email,
     role: roles,
     username: username,
-    prefix:prefix,
+    prefix: prefix,
     name: firstName,
     surname: lastName,
     platform: platform,
-    school:school,
-    classlvl:grade,
+    school: school,
+    classlvl: grade,
     purpose: otherPurpose ? [...purpose, otherPurposeInfo] : purpose,
     environmentKeys: process.env.ENVIRONMENT_KEY,
   });
@@ -137,12 +136,13 @@ export default function Form() {
     try {
       const response = await axios.request(postConfig);
       console.log(response.data);
-    } catch (error) {
-    }
+      router.push("/account");
+    } catch (error) {}
   }
 
   function handleSumit() {
-    const isPurposeError = purpose.every((p) => p.trim() === "") && otherPurposeInfo.trim() === "";
+    const isPurposeError =
+      purpose.every((p) => p.trim() === "") && otherPurposeInfo.trim() === "";
     const isPlatformError = platform.every((p) => p.trim() === "");
     const isPurposeInfoError = otherPurpose && otherPurposeInfo.trim() === "";
 
@@ -160,10 +160,6 @@ export default function Form() {
       // Using Promise.resolve() to ensure synchronous completion before moving to the next line
 
       postRequest();
-
-      setTimeout(() => {
-        router.push("/account");
-      }, 1000);
     }
   }
 
@@ -386,7 +382,7 @@ export default function Form() {
                   >
                     <div className=" justify-start flex w-auto">
                       <div className="text-white text-sm font-normal leading-tight ">
-                        โรงเรียน
+                        โรงเรียน (ใส่โรงเรียนนำหน้า)
                       </div>
                     </div>
                     <input

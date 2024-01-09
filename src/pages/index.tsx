@@ -19,7 +19,6 @@ import Landing4 from "@/vectors/landing/landing4";
 import Landing4Mountain from "@/vectors/landing/landing4Mountain";
 import Landing4Sun from "@/vectors/landing/landing4Sun";
 import Landing5 from "@/vectors/landing/landing5";
-import { AIC } from "@/vectors/organization";
 import Landing6 from "@/vectors/landing/landing6";
 import Landing1M from "@/vectors/landing/landing1M";
 import Landing2M from "@/vectors/landing/landing2M";
@@ -37,7 +36,7 @@ import { useSession } from "next-auth/react";
 export default function Home() {
   const router = useRouter();
   const { data: session, status } = useSession();
-  const targetDate = new Date(Date.UTC(2024, 0, 12, 2, 0, 0));
+  const targetDate = new Date(Date.UTC(2024, 0, 12, 1, 0, 0));
   useEffect(() => {
     // User email is available, make the API request
     //router.push("/auth")
@@ -525,6 +524,17 @@ export default function Home() {
                   className={` md:text-left text-center cursor-pointer text-white md:text-[40px] sm:text-[20px] md:w-[550px] w-[330px] font-medium px-7 py-1 bg-[#7D5496] md:rounded-[30.50px] rounded-2xl`}
                 >
                   การเดินทางมาโรงเรียนเตรียมฯ
+                </motion.div>
+              </Link>
+            </div>
+            <div className="  mt-7 flex max-md:justify-center ">
+              <Link href={"/map"}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={` md:text-left text-center cursor-pointer text-white md:text-[40px] sm:text-[20px]  font-medium px-7 py-1 bg-[#7D5496] md:rounded-[30.50px] rounded-2xl`}
+                >
+                  แผนผังงาน
                 </motion.div>
               </Link>
             </div>
